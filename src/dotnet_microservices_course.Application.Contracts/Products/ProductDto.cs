@@ -1,6 +1,9 @@
-﻿namespace dotnet_microservices_course.Products;
+﻿using System;
+using Volo.Abp.Application.Dtos;
 
-public class ProductDto
+namespace dotnet_microservices_course.Products;
+
+public class ProductDto : EntityDto<Guid>
 {
     public string? Name { get; set; }
     public ProductType? Type { get; set; }

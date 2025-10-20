@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -11,5 +12,12 @@ public class ProductAppService :
 {
     public ProductAppService(IRepository<Product, Guid> repository) : base(repository)
     {
+    }
+
+    public async Task UpdateQuantity(Guid id, double quantity)
+    {
+        var product = await Repository.GetAsync(id);
+        product.Quantity = quantity;
+        await Repository.UpdateAsync(product);
     }
 }
