@@ -15,6 +15,8 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using dotnet_microservices_course.Products;
+using dotnet_microservices_course.Orders;
 
 namespace dotnet_microservices_course.EntityFrameworkCore;
 
@@ -29,6 +31,9 @@ public class dotnet_microservices_courseDbContext :
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
     public DbSet<Book> Books { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderItem> OrderItems { get; set; }
 
     #region Entities from the modules
 
