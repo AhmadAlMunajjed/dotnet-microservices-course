@@ -1,9 +1,12 @@
 ﻿using dotnet_microservices_course.Products;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.EventBus.Distributed;
 
 namespace dotnet_microservices_course.Orders;
 
@@ -14,12 +17,17 @@ public class OrderAppService : CrudAppService<
     PagedAndSortedResultRequestDto,
     CreateUpdateOrderDto>, IOrderAppService
 {
+    private readonly IDistributedEventBus _distributedEventBus;
     private readonly IRepository<Product, Guid> _productRepo;
+
     public OrderAppService(
         IRepository<Order, Guid> repository,
-        IRepository<Product, Guid> productRepor) : base(repository)
+        IDistributedEventBus distributedEventBus,
+        IRepository<Product, Guid> productRepo
+        ) : base(repository)
     {
-        _productRepo = productRepor;
+        _distributedEventBus = distributedEventBus;
+        _productRepo = productRepo;
     }
 
     public override async Task<OrderDto> CreateAsync(CreateUpdateOrderDto input)
@@ -30,6 +38,15 @@ public class OrderAppService : CrudAppService<
 
     protected override async Task<Order> MapToEntityAsync(CreateUpdateOrderDto createInput)
     {
+        var productIds = createInput.Items?.Select(i => i.ProductId.GetValueOrDefault()).ToList() ?? [];
+        var productQuery = await _productRepo.GetQueryableAsync();
+        var products = productQuery.Where(x => productIds.Contains(x.Id));
+        // validate all products exist
+        if (products.Count() != productIds.Count)
+        {
+            throw new BusinessException("One or more products do not exist.");
+        }
+
         var order = new Order
         {
             Date = Clock.Now,
@@ -43,9 +60,12 @@ public class OrderAppService : CrudAppService<
                 Quantity = item.Quantity.GetValueOrDefault(),
                 Price = item.Price.GetValueOrDefault()
             });
-            var product = await _productRepo.GetAsync(item.ProductId.GetValueOrDefault());
-            product.Quantity -= item.Quantity.GetValueOrDefault();
-            await _productRepo.UpdateAsync(product);
+            await _distributedEventBus.PublishAsync(
+                new Products.ProductQuantityChangedEto
+                {
+                    ProductId = item.ProductId.GetValueOrDefault(),
+                    Quantity = item.Quantity.GetValueOrDefault()
+                });
         }
         return order;
     }
