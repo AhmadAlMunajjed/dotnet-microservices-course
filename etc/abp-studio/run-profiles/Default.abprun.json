@@ -1,0 +1,18 @@
+﻿{
+  "applications": {
+    "dotnet_microservices_course.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44339",
+      "path": "../../../src/dotnet_microservices_course.Web/dotnet_microservices_course.Web.csproj",
+      "kubernetesService": ".*-web$",
+      "healthCheckEndpoint": "/health-status",
+      "healthUiEndpoint": "/health-ui",
+      "execution": {
+        "order": 2
+      }
+    }
+  },
+  "containers": {
+    "serviceName": "dotnet_microservices_course-Containers",
+  }
+}

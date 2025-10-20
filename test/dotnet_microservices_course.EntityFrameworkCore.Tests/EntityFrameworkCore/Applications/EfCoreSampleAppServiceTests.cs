@@ -1,0 +1,10 @@
+using dotnet_microservices_course.Samples;
+using Xunit;
+
+namespace dotnet_microservices_course.EntityFrameworkCore.Applications;
+
+[Collection(dotnet_microservices_courseTestConsts.CollectionDefinitionName)]
+public class EfCoreSampleAppServiceTests : SampleAppServiceTests<dotnet_microservices_courseEntityFrameworkCoreTestModule>
+{
+
+}

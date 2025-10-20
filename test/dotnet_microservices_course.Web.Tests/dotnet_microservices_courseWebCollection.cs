@@ -1,0 +1,8 @@
+﻿using dotnet_microservices_course.EntityFrameworkCore;
+
+namespace dotnet_microservices_course;
+
+public class dotnet_microservices_courseWebCollection : dotnet_microservices_courseEntityFrameworkCoreCollectionFixtureBase
+{
+
+}

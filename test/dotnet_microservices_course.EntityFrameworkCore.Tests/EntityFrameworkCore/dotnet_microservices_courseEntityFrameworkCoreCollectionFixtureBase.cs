@@ -1,0 +1,9 @@
+﻿using dotnet_microservices_course.EntityFrameworkCore;
+using Xunit;
+
+namespace dotnet_microservices_course.EntityFrameworkCore;
+
+public class dotnet_microservices_courseEntityFrameworkCoreCollectionFixtureBase : ICollectionFixture<dotnet_microservices_courseEntityFrameworkCoreFixture>
+{
+
+}

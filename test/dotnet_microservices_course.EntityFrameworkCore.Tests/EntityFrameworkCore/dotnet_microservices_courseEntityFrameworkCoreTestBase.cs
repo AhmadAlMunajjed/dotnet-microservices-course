@@ -1,0 +1,8 @@
+﻿using Volo.Abp;
+
+namespace dotnet_microservices_course.EntityFrameworkCore;
+
+public abstract class dotnet_microservices_courseEntityFrameworkCoreTestBase : dotnet_microservices_courseTestBase<dotnet_microservices_courseEntityFrameworkCoreTestModule>
+{
+
+}
