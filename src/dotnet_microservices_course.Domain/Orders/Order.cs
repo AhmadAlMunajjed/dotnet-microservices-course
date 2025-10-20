@@ -7,6 +7,16 @@ namespace dotnet_microservices_course.Orders;
 
 public class Order : AuditedAggregateRoot<Guid>
 {
+    public Order(Guid id)
+    {
+        Id = id;
+    }
+
+    public Order()
+    {
+        
+    }
+
     public string Name { get; set; } = null!;
     public DateTime Date { get; set; }
 

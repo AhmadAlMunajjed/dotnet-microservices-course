@@ -25,7 +25,21 @@ public class OrderAppService : CrudAppService<
 
     protected override async Task<Order> MapToEntityAsync(CreateUpdateOrderDto createInput)
     {
-        return await base.MapToEntityAsync(createInput);
+        var order = new Order
+        {
+            Date = Clock.Now,
+            Name = Guid.NewGuid().ToString(),
+        };
+        foreach (var item in createInput.Items ?? [])
+        {
+            order.Items.Add(new OrderItem
+            {
+                ProductId = item.ProductId.GetValueOrDefault(),
+                Quantity = item.Quantity.GetValueOrDefault(),
+                Price = item.Price.GetValueOrDefault()
+            });
+        }
+        return order;
     }
 
     public override async Task<OrderDto> UpdateAsync(Guid id, CreateUpdateOrderDto input)
