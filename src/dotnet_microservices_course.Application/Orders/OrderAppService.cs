@@ -1,4 +1,4 @@
-﻿using dotnet_microservices_course.Products;
+﻿using dotnet_microservices_course.Products.Integration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,16 +18,16 @@ public class OrderAppService : CrudAppService<
     CreateUpdateOrderDto>, IOrderAppService
 {
     private readonly IDistributedEventBus _distributedEventBus;
-    private readonly IRepository<Product, Guid> _productRepo;
+    private readonly IProductIntegrationService _productService;
 
     public OrderAppService(
         IRepository<Order, Guid> repository,
         IDistributedEventBus distributedEventBus,
-        IRepository<Product, Guid> productRepo
+        IProductIntegrationService productService
         ) : base(repository)
     {
         _distributedEventBus = distributedEventBus;
-        _productRepo = productRepo;
+        _productService = productService;
     }
 
     public override async Task<OrderDto> CreateAsync(CreateUpdateOrderDto input)
@@ -38,11 +38,10 @@ public class OrderAppService : CrudAppService<
 
     protected override async Task<Order> MapToEntityAsync(CreateUpdateOrderDto createInput)
     {
-        var productIds = createInput.Items?.Select(i => i.ProductId.GetValueOrDefault()).ToList() ?? [];
-        var productQuery = await _productRepo.GetQueryableAsync();
-        var products = productQuery.Where(x => productIds.Contains(x.Id));
+        var productIds = createInput.Items?.Select(i => i.ProductId.GetValueOrDefault()).ToArray() ?? [];
+        var productCount = await _productService.GetProductsCountByIds(productIds);
         // validate all products exist
-        if (products.Count() != productIds.Count)
+        if (productCount != productIds.Count())
         {
             throw new BusinessException("One or more products do not exist.");
         }
