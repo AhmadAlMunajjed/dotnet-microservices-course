@@ -258,6 +258,7 @@ public class dotnet_microservices_courseWebModule : AbpModule
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnet_microservices_course API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
                 options.CustomSchemaIds(type => type.FullName);
+                options.HideAbpEndpoints();
             }
         );
     }

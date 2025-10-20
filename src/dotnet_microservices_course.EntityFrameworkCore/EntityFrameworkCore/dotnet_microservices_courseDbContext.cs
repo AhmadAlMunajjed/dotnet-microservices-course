@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using dotnet_microservices_course.Books;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -30,7 +29,6 @@ public class dotnet_microservices_courseDbContext :
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
-    public DbSet<Book> Books { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
@@ -85,14 +83,6 @@ public class dotnet_microservices_courseDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
-        
-        builder.Entity<Book>(b =>
-        {
-            b.ToTable(dotnet_microservices_courseConsts.DbTablePrefix + "Books",
-                dotnet_microservices_courseConsts.DbSchema);
-            b.ConfigureByConvention(); //auto configure for the base class props
-            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
-        });
         
         /* Configure your own tables/entities inside here */
 
