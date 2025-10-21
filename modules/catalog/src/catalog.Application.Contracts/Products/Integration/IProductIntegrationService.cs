@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace dotnet_microservices_course.Products.Integration;
+namespace catalog.Products.Integration;
 
 public interface IProductIntegrationService
 {

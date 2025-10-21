@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.EventBus;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 [EventName("ProductQuantityChangedEto")]
 public class ProductQuantityChangedEto

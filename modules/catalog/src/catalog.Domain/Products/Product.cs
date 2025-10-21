@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 public class Product : AuditedAggregateRoot<Guid>
 {

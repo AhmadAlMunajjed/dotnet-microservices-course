@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 public class ProductAutoMapperProfile : Profile
 {

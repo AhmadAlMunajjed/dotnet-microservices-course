@@ -1,4 +1,4 @@
-﻿using dotnet_microservices_course.Products;
+﻿using catalog.Products;
 using System;
 using Volo.Abp.Domain.Entities;
 

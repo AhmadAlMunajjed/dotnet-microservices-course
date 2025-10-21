@@ -1,7 +1,7 @@
 using AutoMapper;
 using dotnet_microservices_course.Orders;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 public class OrderAutoMapperProfile : Profile
 {

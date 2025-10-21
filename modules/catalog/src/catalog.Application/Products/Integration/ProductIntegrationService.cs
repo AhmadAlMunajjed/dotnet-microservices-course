@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 
-namespace dotnet_microservices_course.Products.Integration;
+namespace catalog.Products.Integration;
 
 public class ProductIntegrationService : IProductIntegrationService, ITransientDependency
 {

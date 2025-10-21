@@ -1,6 +1,6 @@
 using catalog.EntityFrameworkCore;
 using dotnet_microservices_course.Orders;
-using dotnet_microservices_course.Products;
+using catalog.Products;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;

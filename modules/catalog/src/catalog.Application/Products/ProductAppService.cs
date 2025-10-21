@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 public class ProductAppService :
     CrudAppService<Product, ProductDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateProductDto>,

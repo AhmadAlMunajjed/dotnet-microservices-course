@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Application.Dtos;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 public class ProductDto : EntityDto<Guid>
 {

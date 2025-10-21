@@ -2007,7 +2007,7 @@ namespace dotnet_microservices_course.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("dotnet_microservices_course.Products.Product", b =>
+            modelBuilder.Entity("catalog.Products.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -2217,7 +2217,7 @@ namespace dotnet_microservices_course.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("dotnet_microservices_course.Products.Product", "Product")
+                    b.HasOne("catalog.Products.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)

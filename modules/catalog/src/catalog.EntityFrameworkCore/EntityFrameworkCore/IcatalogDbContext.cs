@@ -1,4 +1,4 @@
-﻿using dotnet_microservices_course.Products;
+﻿using catalog.Products;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;

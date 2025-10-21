@@ -1,4 +1,4 @@
-﻿using dotnet_microservices_course.Products.Integration;
+﻿using catalog.Products.Integration;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -60,7 +60,7 @@ public class OrderAppService : CrudAppService<
                 Price = item.Price.GetValueOrDefault()
             });
             await _distributedEventBus.PublishAsync(
-                new Products.ProductQuantityChangedEto
+                new catalog.Products.ProductQuantityChangedEto
                 {
                     ProductId = item.ProductId.GetValueOrDefault(),
                     Quantity = item.Quantity.GetValueOrDefault()

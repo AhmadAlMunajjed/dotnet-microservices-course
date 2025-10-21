@@ -4,7 +4,7 @@ using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.EventBus.Distributed;
 
-namespace dotnet_microservices_course.Products;
+namespace catalog.Products;
 
 public class ProductQuantityChangedHandler :
     IDistributedEventHandler<ProductQuantityChangedEto>,
