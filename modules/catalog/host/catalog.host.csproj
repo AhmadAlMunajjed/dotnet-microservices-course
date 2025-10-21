@@ -126,4 +126,9 @@
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\catalog.Application\catalog.Application.csproj" />
+    <ProjectReference Include="..\src\catalog.EntityFrameworkCore\catalog.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
 </Project>

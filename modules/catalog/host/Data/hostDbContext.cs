@@ -10,10 +10,14 @@ using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Volo.Abp.DependencyInjection;
+using catalog.EntityFrameworkCore;
+using catalog.Products;
 
 namespace catalog.host.Data;
 
-public class hostDbContext : AbpDbContext<hostDbContext>
+[ReplaceDbContext(typeof(IcatalogDbContext))]
+public class hostDbContext : AbpDbContext<hostDbContext>, IcatalogDbContext
 {
     
     public const string DbTablePrefix = "App";
@@ -24,12 +28,15 @@ public class hostDbContext : AbpDbContext<hostDbContext>
     {
     }
 
+    public DbSet<Product> Products { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
 
         /* Include modules to your migration db context */
 
+        // TODO: remove from catalog servicve and depend on administration service
         builder.ConfigureSettingManagement();
         builder.ConfigureBackgroundJobs();
         builder.ConfigureAuditLogging();
@@ -39,7 +46,9 @@ public class hostDbContext : AbpDbContext<hostDbContext>
         builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
-        
+
+        builder.Configurecatalog();
+
         /* Configure your own entities here */
     }
 }

@@ -60,6 +60,7 @@ using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Studio.Client.AspNetCore;
+using catalog.EntityFrameworkCore;
 
 namespace catalog.host;
 
@@ -107,6 +108,10 @@ namespace catalog.host;
     typeof(AbpSettingManagementWebModule),
     typeof(AbpSettingManagementHttpApiModule),
     typeof(AbpSettingManagementApplicationModule),
+
+    // Setting Management module packages
+    typeof(catalogApplicationModule),
+    typeof(catalogEntityFrameworkCoreModule),
 
     // Entity Framework Core packages for the used modules
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
@@ -299,6 +304,7 @@ public class hostModule : AbpModule
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
             options.ConventionalControllers.Create(typeof(hostModule).Assembly);
+            options.ConventionalControllers.Create(typeof(catalogApplicationModule).Assembly);
         });
     }
 
@@ -310,6 +316,7 @@ public class hostModule : AbpModule
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "host API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
                 options.CustomSchemaIds(type => type.FullName);
+                options.HideAbpEndpoints();
             }
         );
     }
