@@ -18,7 +18,7 @@ public class catalogApplicationModule : AbpModule
         context.Services.AddAutoMapperObjectMapper<catalogApplicationModule>();
         Configure<AbpAutoMapperOptions>(options =>
         {
-            options.AddMaps<catalogApplicationModule>(validate: true);
+            options.AddMaps<catalogApplicationModule>(validate: false);
         });
     }
 }
