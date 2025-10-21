@@ -1,3 +1,6 @@
+using catalog.EntityFrameworkCore;
+using dotnet_microservices_course.Orders;
+using dotnet_microservices_course.Products;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -9,23 +12,23 @@ using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
+using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
-using dotnet_microservices_course.Products;
-using dotnet_microservices_course.Orders;
 
 namespace dotnet_microservices_course.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
+[ReplaceDbContext(typeof(IcatalogDbContext))]
 [ConnectionStringName("Default")]
 public class dotnet_microservices_courseDbContext :
     AbpDbContext<dotnet_microservices_courseDbContext>,
     ITenantManagementDbContext,
-    IIdentityDbContext
+    IIdentityDbContext,
+    IcatalogDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
@@ -83,6 +86,7 @@ public class dotnet_microservices_courseDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
+        builder.Configurecatalog();
         
         /* Configure your own tables/entities inside here */
 

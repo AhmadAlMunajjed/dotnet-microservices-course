@@ -1,4 +1,6 @@
-﻿using Volo.Abp.Data;
+﻿using dotnet_microservices_course.Products;
+using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace catalog.EntityFrameworkCore;
@@ -6,7 +8,5 @@ namespace catalog.EntityFrameworkCore;
 [ConnectionStringName(catalogDbProperties.ConnectionStringName)]
 public interface IcatalogDbContext : IEfCoreDbContext
 {
-    /* Add DbSet for each Aggregate Root here. Example:
-     * DbSet<Question> Questions { get; }
-     */
+    public DbSet<Product> Products { get; }
 }
