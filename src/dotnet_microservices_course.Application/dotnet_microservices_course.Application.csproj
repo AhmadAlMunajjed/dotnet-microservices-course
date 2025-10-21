@@ -1,18 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\common.props" />
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <RootNamespace>dotnet_microservices_course</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\dotnet_microservices_course.Domain\dotnet_microservices_course.Domain.csproj" />
     <ProjectReference Include="..\dotnet_microservices_course.Application.Contracts\dotnet_microservices_course.Application.Contracts.csproj" />
+    <ProjectReference Include="../../modules/catalog/src/catalog.Application/catalog.Application.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="9.3.4" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="9.3.4" />
@@ -21,5 +18,4 @@
     <PackageReference Include="Volo.Abp.Identity.Application" Version="9.3.4" />
     <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="9.3.4" />
   </ItemGroup>
-
 </Project>

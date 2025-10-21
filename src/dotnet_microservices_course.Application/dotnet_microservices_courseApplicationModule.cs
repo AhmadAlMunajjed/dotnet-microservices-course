@@ -1,4 +1,5 @@
-﻿using Volo.Abp.PermissionManagement;
+using catalog;
+using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.Account;
 using Volo.Abp.Identity;
@@ -10,6 +11,7 @@ using Volo.Abp.TenantManagement;
 namespace dotnet_microservices_course;
 
 [DependsOn(
+    typeof(catalogApplicationModule),
     typeof(dotnet_microservices_courseDomainModule),
     typeof(dotnet_microservices_courseApplicationContractsModule),
     typeof(AbpPermissionManagementApplicationModule),

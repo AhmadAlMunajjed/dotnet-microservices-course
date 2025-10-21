@@ -1,3 +1,4 @@
+using catalog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using dotnet_microservices_course.Localization;
@@ -21,6 +22,7 @@ using Volo.Abp.TenantManagement;
 namespace dotnet_microservices_course;
 
 [DependsOn(
+    typeof(catalogDomainModule),
     typeof(dotnet_microservices_courseDomainSharedModule),
     typeof(AbpAuditLoggingDomainModule),
     typeof(AbpCachingModule),

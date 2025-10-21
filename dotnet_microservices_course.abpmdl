@@ -39,6 +39,9 @@
       "version": "9.3.4",
       "isInstalled": true,
       "creationTime": "10/20/2025 01:47:56 +00:00"
+    },
+    "catalog": {
+      "path": "modules/catalog/catalog.abpmdl"
     }
   },
   "folders": {
