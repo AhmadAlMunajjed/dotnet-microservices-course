@@ -17,18 +17,21 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using ordering.EntityFrameworkCore;
 
 namespace dotnet_microservices_course.EntityFrameworkCore;
 
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
 [ReplaceDbContext(typeof(IcatalogDbContext))]
+[ReplaceDbContext(typeof(IorderingDbContext))]
 [ConnectionStringName("Default")]
 public class dotnet_microservices_courseDbContext :
     AbpDbContext<dotnet_microservices_courseDbContext>,
     ITenantManagementDbContext,
     IIdentityDbContext,
-    IcatalogDbContext
+    IcatalogDbContext,
+    IorderingDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
@@ -87,7 +90,8 @@ public class dotnet_microservices_courseDbContext :
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
         builder.Configurecatalog();
-        
+        builder.Configureordering();
+
         /* Configure your own tables/entities inside here */
 
         //builder.Entity<YourEntity>(b =>

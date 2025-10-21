@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using catalog;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.Application;
@@ -6,6 +7,7 @@ using Volo.Abp.Application;
 namespace ordering;
 
 [DependsOn(
+    typeof(catalogApplicationContractsModule),
     typeof(orderingDomainModule),
     typeof(orderingApplicationContractsModule),
     typeof(AbpDddApplicationModule),

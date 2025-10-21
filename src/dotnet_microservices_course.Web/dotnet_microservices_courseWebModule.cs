@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OpenIddict.Server.AspNetCore;
 using OpenIddict.Validation.AspNetCore;
+using ordering;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -249,6 +250,7 @@ public class dotnet_microservices_courseWebModule : AbpModule
         {
             options.ConventionalControllers.Create(typeof(dotnet_microservices_courseApplicationModule).Assembly);
             options.ConventionalControllers.Create(typeof(catalogApplicationModule).Assembly);
+            options.ConventionalControllers.Create(typeof(orderingApplicationModule).Assembly);
         });
     }
 

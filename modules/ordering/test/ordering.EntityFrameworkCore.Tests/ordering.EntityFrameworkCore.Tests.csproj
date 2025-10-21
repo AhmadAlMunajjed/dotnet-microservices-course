@@ -13,7 +13,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="9.0.5" />
     <ProjectReference Include="..\..\src\ordering.EntityFrameworkCore\ordering.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\ordering.Application.Tests\ordering.Application.Tests.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="9.3.4"/>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="9.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EntityFrameworkCore\Applications\" />
+    <Folder Include="EntityFrameworkCore\Domains\" />
   </ItemGroup>
 
 </Project>

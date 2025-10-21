@@ -51,8 +51,13 @@
       "folder": "src"
     },
     "ordering.Installer": {
-       "path": "src/ordering.Installer/ordering.Installer.abppkg",
-       "folder": "src"
+      "path": "src/ordering.Installer/ordering.Installer.abppkg",
+      "folder": "src"
+    }
+  },
+  "imports": {
+    "catalog": {
+      "path": "../catalog/catalog.abpmdl"
     }
   }
 }
