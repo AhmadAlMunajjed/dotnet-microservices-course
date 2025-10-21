@@ -57,6 +57,9 @@ public class OrderAppService : CrudAppService<
             order.Items.Add(new OrderItem
             {
                 ProductId = item.ProductId.GetValueOrDefault(),
+                // TODO: fetch product details from product service if needed
+                //ProductName = product.ProductName,
+                //ProductType = product.ProductType,
                 Quantity = item.Quantity.GetValueOrDefault(),
                 Price = item.Price.GetValueOrDefault()
             });

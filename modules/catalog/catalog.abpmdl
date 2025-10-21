@@ -51,8 +51,8 @@
       "folder": "src"
     },
     "catalog.Installer": {
-       "path": "src/catalog.Installer/catalog.Installer.abppkg",
-       "folder": "src"
+      "path": "src/catalog.Installer/catalog.Installer.abppkg",
+      "folder": "src"
     }
   }
 }

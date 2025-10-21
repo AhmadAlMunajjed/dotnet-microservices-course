@@ -79,7 +79,8 @@
   },
   "folders": {
     "items": {
-      "modules": {}
+      "modules": {},
+      "services": {}
     }
   }
 }
