@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using catalog.host.Data;
-using catalog.host.Localization;
-using catalog.host.Menus;
-using catalog.host.Permissions;
-using catalog.host.HealthChecks;
+using ordering.host.Data;
+using ordering.host.Localization;
+using ordering.host.Menus;
+using ordering.host.Permissions;
+using ordering.host.HealthChecks;
 using OpenIddict.Validation.AspNetCore;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -60,9 +60,9 @@ using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Studio.Client.AspNetCore;
-using catalog.EntityFrameworkCore;
+using ordering.EntityFrameworkCore;
 
-namespace catalog.host;
+namespace ordering.host;
 
 [DependsOn(
     // ABP Framework packages
@@ -109,9 +109,8 @@ namespace catalog.host;
     typeof(AbpSettingManagementHttpApiModule),
     typeof(AbpSettingManagementApplicationModule),
 
-    // Setting Management module packages
-    typeof(catalogApplicationModule),
-    typeof(catalogEntityFrameworkCoreModule),
+    typeof(orderingApplicationModule),
+    typeof(orderingEntityFrameworkCoreModule),
 
     // Entity Framework Core packages for the used modules
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
@@ -304,10 +303,7 @@ public class hostModule : AbpModule
         Configure<AbpAspNetCoreMvcOptions>(options =>
         {
             options.ConventionalControllers.Create(typeof(hostModule).Assembly);
-            options.ConventionalControllers.Create(typeof(catalogApplicationModule).Assembly, x =>
-            {
-                
-            });
+            options.ConventionalControllers.Create(typeof(orderingApplicationModule).Assembly);
         });
     }
 
