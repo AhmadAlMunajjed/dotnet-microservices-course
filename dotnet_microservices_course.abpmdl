@@ -42,6 +42,9 @@
     },
     "catalog": {
       "path": "modules/catalog/catalog.abpmdl"
+    },
+    "ordering": {
+      "path": "modules/ordering/ordering.abpmdl"
     }
   },
   "folders": {

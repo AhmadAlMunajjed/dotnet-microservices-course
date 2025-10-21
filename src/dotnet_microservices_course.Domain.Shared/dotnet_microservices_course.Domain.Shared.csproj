@@ -15,6 +15,7 @@
     <PackageReference Include="Volo.Abp.BlobStoring.Database.Domain.Shared" Version="9.3.4" />
     <PackageReference Include="Volo.Abp.GlobalFeatures" Version="9.3.4" />
     <ProjectReference Include="../../modules/catalog/src/catalog.Domain.Shared/catalog.Domain.Shared.csproj" />
+    <ProjectReference Include="../../modules/ordering/src/ordering.Domain.Shared/ordering.Domain.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" Version="9.3.4" />

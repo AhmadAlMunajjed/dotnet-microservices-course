@@ -1,3 +1,4 @@
+using ordering;
 using catalog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -22,6 +23,7 @@ using Volo.Abp.TenantManagement;
 namespace dotnet_microservices_course;
 
 [DependsOn(
+    typeof(orderingDomainModule),
     typeof(catalogDomainModule),
     typeof(dotnet_microservices_courseDomainSharedModule),
     typeof(AbpAuditLoggingDomainModule),

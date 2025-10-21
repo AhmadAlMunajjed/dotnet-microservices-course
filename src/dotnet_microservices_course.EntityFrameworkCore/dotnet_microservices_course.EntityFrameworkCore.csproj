@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\dotnet_microservices_course.Domain\dotnet_microservices_course.Domain.csproj" />
     <ProjectReference Include="../../modules/catalog/src/catalog.EntityFrameworkCore/catalog.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="../../modules/ordering/src/ordering.EntityFrameworkCore/ordering.EntityFrameworkCore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="9.3.4" />

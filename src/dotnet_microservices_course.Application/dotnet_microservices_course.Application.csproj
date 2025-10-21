@@ -9,6 +9,7 @@
     <ProjectReference Include="..\dotnet_microservices_course.Domain\dotnet_microservices_course.Domain.csproj" />
     <ProjectReference Include="..\dotnet_microservices_course.Application.Contracts\dotnet_microservices_course.Application.Contracts.csproj" />
     <ProjectReference Include="../../modules/catalog/src/catalog.Application/catalog.Application.csproj" />
+    <ProjectReference Include="../../modules/ordering/src/ordering.Application/ordering.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="9.3.4" />

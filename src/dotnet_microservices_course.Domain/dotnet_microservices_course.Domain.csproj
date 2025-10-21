@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\dotnet_microservices_course.Domain.Shared\dotnet_microservices_course.Domain.Shared.csproj" />
     <ProjectReference Include="../../modules/catalog/src/catalog.Domain/catalog.Domain.csproj" />
+    <ProjectReference Include="../../modules/ordering/src/ordering.Domain/ordering.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Emailing" Version="9.3.4" />

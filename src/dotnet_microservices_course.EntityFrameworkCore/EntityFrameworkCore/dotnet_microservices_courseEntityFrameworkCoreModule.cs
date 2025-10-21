@@ -1,3 +1,4 @@
+using ordering.EntityFrameworkCore;
 using catalog.EntityFrameworkCore;
 using System;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ using Volo.Abp.Studio;
 namespace dotnet_microservices_course.EntityFrameworkCore;
 
 [DependsOn(
+    typeof(orderingEntityFrameworkCoreModule),
     typeof(catalogEntityFrameworkCoreModule),
     typeof(dotnet_microservices_courseDomainModule),
     typeof(AbpPermissionManagementEntityFrameworkCoreModule),

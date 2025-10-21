@@ -1,3 +1,4 @@
+using ordering;
 using catalog;
 using Volo.Abp.Account;
 using Volo.Abp.Modularity;
@@ -10,6 +11,7 @@ using Volo.Abp.TenantManagement;
 namespace dotnet_microservices_course;
 
 [DependsOn(
+    typeof(orderingApplicationContractsModule),
     typeof(catalogApplicationContractsModule),
     typeof(dotnet_microservices_courseDomainSharedModule),
     typeof(AbpFeatureManagementApplicationContractsModule),

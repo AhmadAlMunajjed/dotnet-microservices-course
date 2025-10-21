@@ -1,3 +1,4 @@
+using ordering;
 using catalog;
 using dotnet_microservices_course.Localization;
 using Volo.Abp.AuditLogging;
@@ -18,6 +19,7 @@ using Volo.Abp.TenantManagement;
 namespace dotnet_microservices_course;
 
 [DependsOn(
+    typeof(orderingDomainSharedModule),
     typeof(catalogDomainSharedModule),
     typeof(AbpAuditLoggingDomainSharedModule),
     typeof(AbpBackgroundJobsDomainSharedModule),
